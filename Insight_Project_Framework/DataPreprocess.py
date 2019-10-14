@@ -78,7 +78,58 @@ class DataPreprocessing:
         "Madison Home",
         "TLY Cotton Karlstad",
         "AODAILIH",
-        "Yaheetech"
+        "Yaheetech",
+        "Ambesonne",
+        "Atlantic Furniture",
+        "BalsaCircle",
+        "Baxton Studio",
+        "Best Choice Products",
+        "CaliTime",
+        "ChezMax",
+        "Christopher Knight Home",
+        "CHUN YI",
+        "Coaster Home Furnishings",
+        "Convenience Concepts",
+        "Deconovo",
+        "Delta Children",
+        "East West Furniture",
+        "Efavormart.com",
+        "Emvency",
+        "Flash Furniture",
+        "Giantex",
+        "GULTMEE",
+        "H.VERSAILTEX",
+        "HGOD DESIGNS",
+        "Homelegance",
+        "HomePop",
+        "HON",
+        "Klear Vu",
+        "Lunarable",
+        "mDesign",
+        "mds",
+        "Meijiafei",
+        "Modway",
+        "Momeni Rugs",
+        "Moslion",
+        "Mugod",
+        "NATUS WEAVER",
+         "NIDITW",
+        "nuLOOM",
+        "Office Star",
+        "OFM",
+        "Pillow Perfect",
+        "POLY & BARK",
+        "Rivet",
+        "Roundhill Furniture",
+        "Safavieh",
+        "Signature Design by Ashley"
+        "Stone & Beam",
+        "Subrtex",
+        "SURE FIT",
+        "Sure Fit",
+        "Surefit",
+        "TreeWool",
+        "uxcell"
         ]
         brands=[w.lower()  for w in brands ]
 
@@ -90,10 +141,14 @@ class DataPreprocessing:
 
         self.load_file()
         #self.makedir()
+    def load_csv_file(self):
+        df_sofas = pd.read_csv(os.pardir+"furniture_sofas.csv")
+        df_chairs = pd.read_csv(os.pardir+"furniture_chairs.csv")
+
 
     #load the raw data into the inputdf dataframe
     def load_file(self):
-        os.filename= os.pardir+"FurnitureImageGeneration.csv"
+        os.filename= os.pardir+"FurnitureImageGeneration_noduplicates.csv"
         self.inputdf = pd.read_csv(os.filename)
         self.inputdf=self.inputdf.drop(columns=["Unnamed: 0"])
 
@@ -229,7 +284,7 @@ class DataPreprocessing:
         newcol=[]
         for i in range(0,self.outputdf.shape[0]):
             assigned=False
-            for j in range(5,0,-1):
+            for j in range(len_furniture_name,0,-1):
                 #print(" ".join(self.outputdf['caption'][i].split()[0:j]))
                 if " ".join(self.outputdf['caption'][i].split()[0:j]) in set_captlist:
                     newcol.append(" ".join(self.outputdf['caption'][i].split()[j+1:]))
@@ -239,7 +294,7 @@ class DataPreprocessing:
                 newcol.append(self.outputdf['caption'][i])
         self.outputdf['caption_old']=self.inputdf['caption']
         self.outputdf['caption_new']=newcol
-        self.outputdf.to_csv(os.pardir+"Amazon_furniture_editedcaptions_2.csv")
+        self.outputdf.to_csv(os.pardir+"Amazon_furniture_editedcaptions_noduplicates.csv")
 
     #compute the vocabulary length
     def compute_the_vocabulary():
@@ -253,14 +308,9 @@ class DataPreprocessing:
 
 def main():
         DataPreprocess = DataPreprocessing()
-        DataPreprocess.display_image_caption(2)
+        #DataPreprocess.display_image_caption(2)
         DataPreprocess.preprocess_caption()
 
 
 if __name__ == "__main__":
         main()
-
-"""
-{'', 'signature', 'sterling', 'folding convertible', 'divano roma furniture', 'zhlj', 'serta geneva', 'limari', 'modern sectional', 'american eagle furniture', 'vig furniture', 'ethan', 'stone', 'homegear', 'boss', 'naomi', 'esofastore classic', 'sealy victor', 'funrelax', 'sofa bed', 'lmz nordic', 'dhp', 'pemberly', 'xiaosunsun', 'great', 'poshbin wilson', 'vidaxl convertible', 'kardiel cumulus', 'office', 'pasargad', 'sawyer', 'fabric', 'elegant', 'lmz', 'brand', 'us pride furniture', 'brown', 'home source', 'baxton', 'poshbin', 'burrow', 'three', 'unfade', 'olee', 'epic furnishings', 'simmons', 'tov', 'upholstered', 'sofa trendz', 'mainstays apartment', 'ghp', 'gdfda high', 'campaign', 'whiteline', 'rocket', 'corliving club', 'loveseat sofa', 'cortesi', 'sunset trading', 'aimcae', 'esofastore casual', 'coaster sofa', 'serta deep', 'rivet revolveserta', 'oliver', 'gdf', 'ff', 'poundex', 'gdfstudio mckinley', 'bowery hill', 'ghp capacity', 'carolina', 'nature utility', 'sofas couches', 'wrea', 'lounge chair', 'velago rossini', 'velago', 'coaster home', 'single', 'vidaxl modern', 'furinno simply', 'legend', 'marceooselm', '24 7 shop at home', 'modern large', 'divano', 'wsn', 'mamasam convertible', 'meridian furniture', 'dnnal sofas', 'furniture of america', 'great deal furniture', 'container furniture direct', 'abbyson', 'tommy', 'fflsdr', 'modern bonded', 'istikbal elita', 'morrisofa william', 'flash furniture', 'klaussner', 'white', 'polaris mini', 'tk classics', 'jean', 'design', 'oliver pierce', 'casual style', 'simpli', 'furniture for', 'emerald', 'kmp', 'large inch', 'acme sofa', 'roundhill', 'hugo', 'handy', 'zhihuitong', 'ashley', 'velvet inch', 'david', 'modern living', 'morrisofa everly', 'modern style', 'zinus ricardo', 'lazy', 'xvtyxsxio', 'american eagle', 'best master', 'lounge malibu', 'catalina', 'signature design by ashley', 'jresboen', 'xiao', 'global', 'porter', 'divani', 'brika', 'christopher', 'infini', 'rivet uptown', 'sofas', 'modern', 'kanizz deluxe', 'danxee', 'sealy anson', 'pemberly row', 'we', 'mewmewcat', 'harlow', 'serta astoria', 'fs lazy', 'work', 'coaster fabric', 'ilovo', 'velago ollon', 'classic', 'zuo varietal', 'home styles', 'vegas futon', 'boca rattan', 'convertible', 'modern contemporary', 'ac', 'zuo', 'tribecca', 'yyh single', 'modway resolute', 'black', 'milan sofa', 'lazy sofa', 'large', 'classic brandschristopher knight home', 'dg casa', 'polaris', 'bali', 'stylistics hunter', 'pangea', 'seaphy', 'acme kiva', 'wrea three', 'homelegance resonance', 'milan', 'glory', 'rivet frederick', 'rattan', 'taylor', 'european furniture', 'loungie', 'chelsea', 'modway', 'loveseat chaise', 'wsn corner', 'poundex sofas', 'universal', 'dnnal faux', 'classic linen', 'dandd', 'foldable dual', 'dnnal fabric', 'kotag', 'brika home', 'major', 'greatime top', 'esofastore modern', 'fdw', 'jandm', 'global supplies', 'convertible sectional', 'lisbona', 'gdfstudio', 'furniture sofa', 'simmons upholstery', 'eurotech', 'homeroots furniture', 'home', 'indoor', 'tidyard', 'charles ashton', 'zhlj solid', 'duobed', 'xavieradoherty', 'lmz lazy', 'aodailih', 'benzara flannelette', 'steve', 'folding lazy', 'lesro', 'iconic', 'flip', 'alera qub', 'extra', 'home life', 'monarch', 'leather', 'festnight faxu', 'lane', 'bowery', 'global furniture usa', 'seatcraft', 'dorel', 'serta', 'hwy', 'rattan living', 'tly cotton karlstad', 'larson', 'acme furniture', 'festnight modern', 'lounge', 'dark', 'honbay sofa', 'starsun', 'kardiel monroe', 'homeroots', 'pearington', 'ids', 'coaster roy', 'wrea fabric', 'thomas', 'elle', 'south cone home', 'velvet', 'iconic home', 'flash', 'pulaski', 'yskwa', 'j and m furniture', 'coja', 'domesis granada', 'aynefy', 'gray velvet', 'benjara', 'mercana', 'franklin', 'poly', 'nrthtri', 'glory furniture', 'cambridge contemporary', 'dnnal', 'zentique', 'merax', 'poundex black', 'acme chantelle', 'container furniture', 'benjara leather', 'rivet sloane', 'jinpengran', 'esofastore', 'vidaxl chesterfield', 'wurink', 'zoubiag', 'vvr homes', 'benchcraft charenton', 'serta sierra', 'rattan and', 'zhlj lazy', 'offex', 'bestmassage', 'sofa side', 'truly', 'rivet damien', 'beam', 'domesis scooped', 'xhlxhl', 'best choice products', 'honbay convertible', 'mainstays', 'sofa furniture', 'upholstered lazy', 'thaweesuk', 'istikbal fantasy', 'gold', 'jennifer taylor home', 'lexicon', 'furniture of', 'tosh', 'best choice', 'benjara contemporary', 'modern extra', 'sunpan', 'blackjack', 'cambridge', 'victoria', 'modhaus', 'sofa leather', 'corliving', 'mandycng', 'modern two', 'kure', 'foldable', 'apt2b', 'lexicon barberton', 'futon', 'knocbel', 'esofastore living', 'south cone', 'ff lazy', 'greatime', 'madison', 'camper', 'jamie', 'beyan sb', 'alera', 'gy', 'irene', 'signature design', 'hooker', 'ikea', 'crafters', 'armen living', 'contemporary home', 'kardiel woodrow', 'fillmore', 'auroraelight', 'stylistics', 'domesis', 'acanva collection', 'morrisofa', 'homelegance casoria', 'dwell', 'fitnessclub', 'redde', 'serta rane collection', 'kemanduo', 'acme zuriel', 'america luxury sofa', 'wsn fabric', 'convertible sofa', 'multifunctional', 'dreamseat', 'skb', 'benjara benzara', 'rivet cove', 'nhi', 'homestyles', 'kings', 'made', 'aimcae convertible', 'sunset', 'zinus josh', 'knocbel upholstered', 'south', 'coaster velvet', 'dhp andora', 'container direct', 'comfortmax', 'xleve', 'homelegance bastrop', 'best', 'oadeer home', 'fdw recliner', 'zinus juan', 'tevahome', 'qxx', 'loveseat', 'ihpaper', 'marceooselm leisure', 'golden', 'modern franco', 'teenage', 'inside', 'kingway', 'giantex', 'homelegance center', 'powell', 'hydeline', 'nanapluz', 'mikewei', 'serta mason', 'vig', 'folding sofa', 'scm', 'canditree modern', 'grey', 'acme vendome', 'south shore', 'christies', 'homeroots upholstery', 'nature', 'dhp emily', 'coaster tufted', 'oadeer', 'recpro', 'baja', 'benjara leatherette', 'zinus benton', 'kardiel', 'stone and beam', 'posh', 'design tree', 'sealy montreal', 'sofa sleeper', 'mainstays sleeper', 'harperandbright', 'acanva', 'adjustable floor', 'vegas', 'ethan allen', 'chelsea home', 'night', 'jennifer', 'casual folding', 'vintage', 'adjustable', 'blackjack furniture', 'serta palisades', 'la', 'luton sectional', 'my', 'homelegance taye', 'belmont', 'global furniture', 'rivet revolve', 'l', 'yskwa double', 'ofm', 'kanizz contemporary', 'furniture', 'serta rta palisades collection', 'pulaski upholstered', 'navy', 'sleeper', 'modway empress', 'lifestyle', 'fold', 'new', 'garden', 'rivet north', 'poundex bobkona', 'furinno', 'convertible recliner', 'charles', 'massage', 'kanizz', 'modern glam', 'us', 'corliving lea', 'noble', 'scdxj', 'eqsalon', 'loveseat modern', 'finch', 'pearington macon', 'upholstered inch', 'belagio', 'esofastore sectional', 'lazzaro leather', 'italian', 'cozinest pu', 'lilola', 'us pride', 'brentwood', 'contemporary', 'logan', 'us furnishing', 'burrow nomad', 'mamasam', 'armen', 'lucky', 'contemporary three', 'sofa', 'container', 'armrest', 'serta rta', 'acme', 'folding', 'coaster quinn', 'mid', 'leather sofa', 'modern leather', 'edloe', 'golden coast', 'funrelax sectional', 'meridian', 'homelegance aram', 'modern sofa', 'adianna', 'sofas two', 'harper', 'casual', 'zinus', 'zuri', 'pearington multifunctional', 'xiaosunsun customized', 'samuel', 'vidaxl sofa', 'tidyard modern', 'modern black', 'gray sofa', 'new classic', 'classic large', 'classic two', 'chlfsfd', 'new felton', 'coaster', 'madison home', 'zuo jonkoping', 'jnm', 'gdfda', 'fandf', 'joanna', 'ilovo double', 'festnight', 'poundex upholstered', 'serta upholstery', 'lcb', 'ms', 'leather sectional', 'young', 'zinus jackie', 'yyh', 'adianna sofa', 'ashley furniture', 'modway delve', 'gray', 'offex contemporary', 'brown faux', 't', 'hawthorne', 'esther', 'classic and', 'krei', 'genuine', 'greyson', 'american furniture', 'benzara', 'benzara button', 'fat', 'kathy', 'agata', 'classic living', 'contemporary modern', 'zdnals', 'beyan', 'istikbal', 'sectional', 'acme ceasar', 'dhingm', 'novogratz', 'american', 'inspire', 'ashley furniture signature design', 'leisuremod', 'wood', 'ravenna', 'q', 'button', 'mechali', 'casa andrea', 'beverly', 'classic chesterfield', 'cozinest', 'yoyi', 'lexicon eli', 'baxton studio', 'vita', 'daonanba', 'truemodern', 'flash furniture benchcraft maier', 'living', 'european', 'j', 'klaussner neyland', 'mewmewcat sofa', 'uniters', 'mademai', 'nsk', 'blue', 'upholstered leather', 'artum', 'mission', 'safavieh', 'rivet', 'homes: inside out', 'benzara sectional', 'casa mare', 'serta copenhagen', 'lazy couch', 'futon sofa', 'truemodern jackson', 'giantex futon', 'vig contemporary', 'artdeco', 'sofa for', 'zinus lauren', 'luton', 'morrisofa cameron', 'homelegance', 'benchcraft brindon', 'beige', 'futon sleeper', 'benchcraft', 'blue velvet', 'zhlj zero', 'ikea cover', 'zhihuitong modern', 'fs', 'zhlj tatami', 'lazzaro', 'vidaxl', 'lifestyle solutions', 'lmz comfortable', 'homelegance welty', 'newport', 'mecor', 'diamond', 'homeroots x', 'sealy', 'modway valour', 'casa', 'chic', 'giantex fold', 'nature full', 'sectional sofa', 'aycp', 'rabinyod', 'housel', 'scott', 'xavieradoherty bed', 'limari home', 'hydt', 'sunpan modern', 'honbay', 'homelegance belmont', 'progressive', 'kuber', 'sandy', 'dreamhank', 'a', 'yaheetech', 'acanva chesterfield', 'canditree', 'coaster home furnishings', 'zinus sunny', 'at', 'tufted', 'tidyard leather', 'office star', 'inspired', 'l shape', 'littletonhome', 'baja convert', 'fun', 'case', 'erssst', 'sleeper sofa', 'tufted sofa'}
-
-"""
