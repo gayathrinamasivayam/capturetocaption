@@ -1,7 +1,6 @@
 # Caption as a Service
 
-## The aim of this project is to provide captions for products from their images. Online marketplaces are rapidly growing at a fast pace and the goal of this product is to provide instant image captioning system
-that can take an image of a furniture and produce an instant caption. The product is currently setup to work with sofas and chairs.
+## The aim of this project is to provide captions for products from their images. Online marketplaces are rapidly growing at a fast pace and the goal of this product is to provide instant image captioning system that can take an image of a furniture and produce an instant caption. The product is currently setup to work with sofas and chairs.
 
 ## Setup
 Clone repository and update python path
