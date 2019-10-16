@@ -10,6 +10,7 @@ This class removes duplicate images from the earlier preprocessed file list
 obtained on running DataPreprocess.py
 You must run DataPreprocess.py before you run this file as its input depends on
 the output file obtained from DataPreprocess.py
+This class is based on the work done at https://github.com/moondra2017/Computer-Vision
 """
 
 class DataPreprocess_1:
