@@ -1,19 +1,13 @@
-# Insight_Project_Framework
-Framework for machine learning projects at Insight Data Science.
+# Caption as a Service
 
-## Motivation for this project format:
-- **Insight_Project_Framework** : Put all source code for production within structured directory
-- **tests** : Put all source code for testing in an easy to find location
-- **configs** : Enable modification of all preset variables within single directory (consisting of one or many config files for separate tasks)
-- **data** : Include example a small amount of data in the Github repository so tests can be run to validate installation
-- **build** : Include scripts that automate building of a standalone environment
-- **static** : Any images or content to include in the README or web framework if part of the pipeline
+## The aim of this project is to provide captions for products from their images. Online marketplaces are rapidly growing at a fast pace and the goal of this product is to provide instant image captioning system
+that can take an image of a furniture and produce an instant caption. The product is currently setup to work with sofas and chairs.
 
 ## Setup
 Clone repository and update python path
 ```
-repo_name=Insight_Project_Framework # URL of your new repository
-username=mrubash1 # Username for your personal github account
+repo_name=capturetocaption 
+username=gayathrinamasivayam # Username for your personal github account
 git clone https://github.com/$username/$repo_name
 cd $repo_name
 echo "export $repo_name=${PWD}" >> ~/.bash_profile
@@ -44,8 +38,7 @@ git push origin $branch_name
 
 ## Requisites
 
-- List all packages and software needed to build the environment
-- This could include cloud command line tools (i.e. gsutil), package managers (i.e. conda), etc.
+- You will need the following packages installed: Python 3.6, Keras, NLTK, cv2
 
 #### Dependencies
 
@@ -58,11 +51,6 @@ pip install -r requiremnts
 ```
 
 ## Build Environment
-- Include instructions of how to launch scripts in the build subfolder
-- Build scripts can include shell scripts or python setup.py files
-- The purpose of these scripts is to build a standalone environment, for running the code in this repository
-- The environment can be for local use, or for use in a cloud environment
-- If using for a cloud environment, commands could include CLI tools from a cloud provider (i.e. gsutil from Google Cloud Platform)
 ```
 # Example
 
