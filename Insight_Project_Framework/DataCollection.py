@@ -7,8 +7,8 @@ import pandas as pd
 import os
 
 #class WebScrapeData:
-
-os.pardir ="C:\\Users\\Gayathri\\Documents\\Insight\\ImageCaption\\capturetocaption\\data\\raw\\sofas\\"
+os.pardir="/home/ubuntu/capturetocaption/data/raw/furniture1/"
+#os.pardir ="C:\\Users\\Gayathri\\Documents\\Insight\\ImageCaption\\capturetocaption\\data\\raw\\sofas\\"
         #def __init__(self):
         #    pass
 
@@ -16,7 +16,7 @@ os.pardir ="C:\\Users\\Gayathri\\Documents\\Insight\\ImageCaption\\capturetocapt
 #to extract the images and the caption pairs and write it to file
 def extracting_data_url(url, index_page):
 
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome('/usr/local/bin/chromedriver')
     #alternate encoding driver = webdriver.Chrome(executable_path=r'C:\Program Files\Chromedriver\chromedriver.exe')
     print(url)
     driver.get(url)
@@ -62,9 +62,4 @@ def main():
 if __name__ == "__main__":
             main()
 
-###
-#Questions about my coding:
-#Should I have class file but there is nothing much to customize
-#How do i describe a function that calls another function
-#Exception handling
-###
+
