@@ -4,6 +4,8 @@
 
 ## The project currently is built on a modified encoder decoder architecture that has been used in the prior work on Image captioning. The project was built on Keras with a Tensorflow backend In the future I plan to use an attention architecture and vary it to see if I can improve the results obtained so far, as well as reduce the inference time of generating a caption from its image.  
 
+### The code and the documentation are being updated on this repository
+
 ## Setup
 Clone repository and update python path
 ```
