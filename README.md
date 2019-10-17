@@ -9,5 +9,6 @@
 ## Setup
 Clone repository and update python path
 ```
-git clone https://github.com/gayathrinamasivayam/capturetocaption
+git clone https://github.com/gayathrinamasivayam/capturetocaption.git
+
 ```
