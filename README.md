@@ -9,11 +9,5 @@
 ## Setup
 Clone repository and update python path
 ```
-repo_name=capturetocaption 
-username=gayathrinamasivayam # Username for your personal github account
-git clone https://github.com/$username/$repo_name
-cd $repo_name
-echo "export $repo_name=${PWD}" >> ~/.bash_profile
-echo "export PYTHONPATH=$repo_name/src:${PYTHONPATH}" >> ~/.bash_profile
-source ~/.bash_profile
+git clone https://github.com/gayathrinamasivayam/capturetocaption
 ```
