@@ -1,3 +1,10 @@
+"""
+This has the evaluation methods used for this project
+Input:
+--file_to_log_results: file to log test_results
+--test_results_filename: name of the .csv file that has the test results
+"""
+
 from nltk.translate.bleu_score import SmoothingFunction
 smoothie = SmoothingFunction().method4
 from nltk.translate.bleu_score import sentence_bleu
@@ -6,11 +13,13 @@ from nltk.translate.bleu_score import corpus_bleu
 #import matplotlib.pyplot as plt
 #import cv2
 import logging
+import pandas as pd
 
 
 class Evaluate:
 
-    def __init__(self, file_to_log_results):
+    def __init__(self, file_to_log_results, test_results_filename):
+        self.testdf=pd.read_csv(test_results_filename)
         smoothie = SmoothingFunction().method4
         self.add_score(file_to_log_results)
         logging.basicConfig(filename=file_to_log_results,level=logging.INFO)

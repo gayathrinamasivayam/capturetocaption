@@ -14,10 +14,22 @@ This preprocessing could have been merged with the original preprocess file. How
 (3) to be able to make changes to this phase and test further
 
 it was separated into a separate class and the results are stored separately
+Input:
+---len_of_sentence: minimum number of words that need to be in a sentence
+---filepath: path to the folder containing the preprocessed file
+---filename: name of the .csv file that contains the preprocessed caption and that is obtained as an output from
+DataPreprocess.py and after the duplicate images have been removed
+
+Output:
+--file called "Amazon_furniture_editedcaptions_noduplicates_length"+len_of_sentence+".csv" file
+--file called "Amazon_furniture_editedcaptions_noduplicates_length"+len_of_sentence+"_design.csv" file
+The "_design.csv" filters only data that have captions with certain design elements in them
+
+The ouput of this python file can be used as input to Model.py
 """
 class DataPreprocess_2:
 
-    def __init__(self, len_of_sentence=2):
+    def __init__(self, len_of_sentence=2, filepath, filename):
         os.pardir ="C:\\Users\\Gayathri\\Documents\\Insight\\ImageCaption\\capturetocaption\\data\\raw\\sofas\\"
         self.df = pd.read_csv(os.pardir +"Amazon_furniture_editedcaptions_noduplicates.csv")
         self.select_data(len_of_sentence)

@@ -1,3 +1,10 @@
+"""
+This is the main data preprocessing file for the text/captions in the dataset
+The data that is extracted by the webscrapper is extremely noisy and significant prepreocessing needs to be Done
+
+
+
+"""
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
@@ -7,7 +14,7 @@ import re
 
 class DataPreprocessing:
 
-    def __init__(self):
+    def __init__(self, filepath, filename):
         #some of the popular brands on amazon selling sofas
         brands= ["24 7 Shop at Home",
         "Acme Furniture",
@@ -133,22 +140,21 @@ class DataPreprocessing:
         ]
         brands=[w.lower()  for w in brands ]
 
-        os.pardir ="C:\\Users\\Gayathri\\Documents\\Insight\\ImageCaption\\capturetocaption\\data\\raw\\sofas\\"
+        #os.pardir ="C:\\Users\\Gayathri\\Documents\\Insight\\ImageCaption\\capturetocaption\\data\\raw\\sofas\\"
+        os.pardir = filepath
         self.inputdf = pd.DataFrame() #dataframe with raw data
         self.outputdf=pd.DataFrame(columns=['filename','caption']) #dataframe with preprocessed captions and filename pairs
 
         self.len_traindir = 8000 #currently set to 8000
 
-        self.load_file()
+        self.load_file(filename)
         #self.makedir()
-    def load_csv_file(self):
-        df_sofas = pd.read_csv(os.pardir+"furniture_sofas.csv")
-        df_chairs = pd.read_csv(os.pardir+"furniture_chairs.csv")
 
 
     #load the raw data into the inputdf dataframe
-    def load_file(self):
-        os.filename= os.pardir+"FurnitureImageGeneration_noduplicates.csv"
+    def load_file(self, filename):
+        #os.filename= os.pardir+"FurnitureImageGeneration_noduplicates.csv"
+        os.filename= os.pardir+filename
         self.inputdf = pd.read_csv(os.filename)
         self.inputdf=self.inputdf.drop(columns=["Unnamed: 0"])
 

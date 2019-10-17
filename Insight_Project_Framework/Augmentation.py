@@ -1,4 +1,14 @@
-# example of horizontal shift image augmentation
+#"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#This code augments a dataset of image caption pairs with new image caption pairs
+#The class takes as input:
+#--path to the training data set where the images are located
+#-- filename of a csv which contains the list of images and caption pairs
+#--num of new augmented images to be creadted
+#--random seed
+#The class ouputs
+#---the augmented images in the "augment" folder
+#---a file "augmented_data_1.csv" containing the name of the augmented images and the caption paris
+
 import os
 import pandas as pd
 from numpy import expand_dims
@@ -17,17 +27,22 @@ class augment_image:
 
     def __init__(self, path_to_images, filename, numofimages=0, random_seed=363):
         #try:
+            #read in the csv
             self.df=pd.read_csv(path_to_images+filename)
             print(self.df.columns)
         #except:
-
+            #remove any pre-exisitng files in the augment folder
             files = glob.glob(path_to_images+"augmented/*")
             for f in files:
                 os.remove(f)
-            self.generate_images(numofimages, path_to_images, random_seed)
-            self.generate_captions(path_to_images)
+            self.__generate_images(numofimages, path_to_images, random_seed)
+            self.__generate_captions(path_to_images)
 
-    def generate_images(self, numofimages, path_to_images, random_seed):
+    def __generate_images(self, numofimages, path_to_images, random_seed):
+    """
+    Generate new augmented images
+
+    """
         self.dict_captions={}
         self.dict_oldcaptions={}
         self.dict_newcaptions={}
@@ -55,7 +70,10 @@ class augment_image:
             print(self.df['caption'][randindex])
             """
 
-    def generate_captions(self, path_to_images):
+    def __generate_captions(self, path_to_images):
+    """
+    Create captions for the augment
+    """
         files = [f for f in listdir(path_to_images+"augmented") if isfile(join(path_to_images+"augmented", f))]
         print(files)
         df1 = pd.DataFrame(columns=['filename','caption_old','caption','caption_new'])

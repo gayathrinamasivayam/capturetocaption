@@ -1,4 +1,8 @@
 
+"""
+This is the main class for building the image caption generation model
+
+"""
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
@@ -15,11 +19,6 @@ from keras.applications.vgg16 import preprocess_input
 from keras.preprocessing.image import img_to_array
 
 from keras.models import Model
-#from keras.layers import Input
-#from keras.layers import Dense
-#from keras.layers import LSTM
-#from keras.layers import Embedding
-#from keras.layers import Dropout
 from keras.layers import Input, Dense, Dropout, LSTM, Embedding, concatenate, RepeatVector, TimeDistributed, Bidirectional
 from keras.layers.merge import add
 from keras.callbacks import ModelCheckpoint
@@ -156,6 +155,7 @@ class DataModelling:
                 Y.append(output_seq)
         return X1, X2, Y
 
+
     def build_model(self):
         logging.info("building model here")
         features=self.__CNN_extract_features(self.traindf)
@@ -164,9 +164,10 @@ class DataModelling:
         self.vX1_features=self.__obtain_list_features_train(features, self.vX1)
         logging.info("finished creating training and validation features")
         logging.info("calling modified marc_tanti "+str(self.size))
+        """
         #calling model 1
         self.model= self.__define_model_tanti_modified(self.size)
-        plot_model(self.model, to_file='model1.png')
+        #plot_model(self.model, to_file='model1.png')
 
         tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
                           write_graph=True, write_images=False)
@@ -186,7 +187,7 @@ class DataModelling:
 
         #calling model 2
         self.model= self.__define_model_tanti_modified_concat(self.size)
-        plot_model(self.model, to_file='model2.png')
+        #plot_model(self.model, to_file='model2.png')
 
         tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
                           write_graph=True, write_images=False)
@@ -203,14 +204,14 @@ class DataModelling:
         self.testdf.to_csv("test_results_"+self.filename_prefix+"model2.csv")
         #self.traindf.to_csv("train_results_"+self.filename_prefix+".csv")
         self.add_score()
+        """
 
-
-        #calling model 3
-        self.model= __define_model_tanti_modified_LSTM(self.size, 200)
-        plot_model(self.model, to_file='model3.png')
+        #calling model 4
+        self.model= self.__define_model_tanti_modified_LSTM_1(self.size, 200)
+        #plot_model(self.model, to_file='model3.png')
         tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
                           write_graph=True, write_images=False)
-        filepath="ImageCaption_"+self.filename_prefix+"model3.h5"
+        filepath="ImageCaption_"+self.filename_prefix+"model4.h5"
         checkpoint = ModelCheckpoint(filepath, monitor='val_loss',  verbose=2, save_best_only=True, mode='auto')
         earlystop=EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=2, mode='auto', baseline=None)
         callbacks_list = [checkpoint, tensorboard, earlystop]
@@ -220,7 +221,7 @@ class DataModelling:
         logging.info(self.__print_history(history))
         #self.generate_description_train()
         self.generate_description_test()
-        self.testdf.to_csv("test_results_"+self.filename_prefix+"model3.csv")
+        self.testdf.to_csv("test_results_"+self.filename_prefix+"model4.csv")
         #self.traindf.to_csv("train_results_"+self.filename_prefix+".csv")
         self.add_score()
 
@@ -370,7 +371,7 @@ class DataModelling:
         plt.legend(['train', 'test'], loc='upper left')
         plt.show()
 
-    def word_for_id(self,integer, tokenizer):
+    def to_word(self,integer, tokenizer):
         for word, index in tokenizer.word_index.items():
             if index == integer:
                 return word
@@ -378,19 +379,19 @@ class DataModelling:
 
     # generate a description for an image
     def generate_desc(self, model, tokenizer, photo):
-        in_text = 'startseq'
+        input_seq_so_far = 'startseq'
         for i in range(self.maxlen):
-            sequence = tokenizer.texts_to_sequences([in_text])[0]
+            sequence = tokenizer.texts_to_sequences([input_seq_so_far])[0]
             sequence = pad_sequences([sequence], self.maxlen)
             yhat = model.predict([photo,sequence], verbose=0)
             yhat = argmax(yhat)
-            word = self.word_for_id(yhat, tokenizer)
-            if word is None:
+            nextword = self.to_word(yhat, tokenizer)
+            if nextword is None:
                 break
-            in_text += ' ' + word
-            if word == 'endseq':
+            input_seq_so_far += ' ' + nextword
+            if nextword == 'endseq':
                 break
-        return in_text
+        return input_seq_so_far
 
 
     def generate_description_test(self):
