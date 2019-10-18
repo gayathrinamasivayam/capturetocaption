@@ -164,54 +164,11 @@ class DataModelling:
         self.vX1_features=self.__obtain_list_features_train(features, self.vX1)
         logging.info("finished creating training and validation features")
         logging.info("calling modified marc_tanti "+str(self.size))
-        """
-        #calling model 1
-        self.model= self.__define_model_tanti_modified(self.size)
-        #plot_model(self.model, to_file='model1.png')
-
-        tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
-                          write_graph=True, write_images=False)
-        filepath="ImageCaption_"+self.filename_prefix+"model1.h5"
-        checkpoint = ModelCheckpoint(filepath, monitor='val_loss',  verbose=2, save_best_only=True, mode='auto')
-        earlystop=EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=2, mode='auto', baseline=None)
-        callbacks_list = [checkpoint, tensorboard, earlystop]
-        history=self.model.fit([self.X1_features, self.X2], [self.Y], validation_data=([self.vX1_features, self.vX2],[self.vY]), callbacks=callbacks_list, batch_size=self.batch_size, epochs=50, verbose=2)
-
-        #self.model.save("ImageCaption_"+self.filename_prefix+".h5")
-        logging.info(self.__print_history(history))
-        #self.generate_description_train()
-        self.generate_description_test()
-        self.testdf.to_csv("test_results_"+self.filename_prefix+"model1.csv")
-        #self.traindf.to_csv("train_results_"+self.filename_prefix+".csv")
-        self.add_score()
-
-        #calling model 2
-        self.model= self.__define_model_tanti_modified_concat(self.size)
-        #plot_model(self.model, to_file='model2.png')
-
-        tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
-                          write_graph=True, write_images=False)
-        filepath="ImageCaption_"+self.filename_prefix+"model2.h5"
-        checkpoint = ModelCheckpoint(filepath, monitor='val_loss',  verbose=2, save_best_only=True, mode='auto')
-        earlystop=EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=2, mode='auto', baseline=None)
-        callbacks_list = [checkpoint, tensorboard, earlystop]
-        history=self.model.fit([self.X1_features, self.X2], [self.Y], validation_data=([self.vX1_features, self.vX2],[self.vY]), callbacks=callbacks_list, batch_size=self.batch_size, epochs=50, verbose=2)
-
-        #self.model.save("ImageCaption_"+self.filename_prefix+".h5")
-        logging.info(self.__print_history(history))
-        #self.generate_description_train()
-        self.generate_description_test()
-        self.testdf.to_csv("test_results_"+self.filename_prefix+"model2.csv")
-        #self.traindf.to_csv("train_results_"+self.filename_prefix+".csv")
-        self.add_score()
-        """
-
-        #calling model 4
         self.model= self.__define_model_tanti_modified_LSTM_1(self.size, 200)
         #plot_model(self.model, to_file='model3.png')
         tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
                           write_graph=True, write_images=False)
-        filepath="ImageCaption_"+self.filename_prefix+"model4.h5"
+        filepath="ImageCaption_"+self.filename_prefix+"model.h5"
         checkpoint = ModelCheckpoint(filepath, monitor='val_loss',  verbose=2, save_best_only=True, mode='auto')
         earlystop=EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=2, mode='auto', baseline=None)
         callbacks_list = [checkpoint, tensorboard, earlystop]
@@ -221,7 +178,7 @@ class DataModelling:
         logging.info(self.__print_history(history))
         #self.generate_description_train()
         self.generate_description_test()
-        self.testdf.to_csv("test_results_"+self.filename_prefix+"model4.csv")
+        self.testdf.to_csv("test_results_"+self.filename_prefix+"model.csv")
         #self.traindf.to_csv("train_results_"+self.filename_prefix+".csv")
         self.add_score()
 
@@ -298,32 +255,6 @@ class DataModelling:
         # decoder model
         decoder_1 = concatenate([x1, x2])
         decoder = Dense(size, activation='relu')(decoder_1)
-        outputs = Dense(self.vocab_size, activation='softmax')(decoder)
-
-        # model parameters and compilation
-        model = Model(inputs=[inputs1, inputs2], outputs=outputs)
-        model.compile(loss='categorical_crossentropy', optimizer='adam')
-        # summarize model
-        logging.info(model.summary())
-        return model
-
-    def __define_model_tanti_modified_LSTM(self, size=200, lstm_size=500 ):
-        #visual feature model
-        logging.info("modified tanti with LSTM decoder, embedding size:"+str(size))
-
-        inputs1 = Input(shape=(4096,))
-        x1_1 = Dropout(0.5)(inputs1)
-        #x1_2 = Dense(300, activation='relu')(x1_1)
-        x1 = Dense(size, activation='relu')(x1_1)
-        # language model
-        inputs2 = Input(shape=(self.maxlen,))
-        x2_1 = Embedding(self.vocab_size, size, mask_zero=True)(inputs2)
-        x2_2 = Dropout(0.5)(x2_1)
-        x2 = LSTM(size)(x2_2)
-        # decoder model
-        decoder_1 = concatenate([x1, x2])
-        decoder = Bidirectional(LSTM(lstm_size, return_sequences=False))(decoder_1)
-        #decoder = Dense(size, activation='relu')(decoder_2)
         outputs = Dense(self.vocab_size, activation='softmax')(decoder)
 
         # model parameters and compilation
