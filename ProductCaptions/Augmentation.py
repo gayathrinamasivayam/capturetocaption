@@ -1,14 +1,14 @@
-#"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-#This code augments a dataset of image caption pairs with new image caption pairs
-#The class takes as input:
-#--path to the training data set where the images are located
-#-- filename of a csv which contains the list of images and caption pairs
-#--num of new augmented images to be creadted
-#--random seed
-#The class ouputs
-#---the augmented images in the "augment" folder
-#---a file "augmented_data_1.csv" containing the name of the augmented images and the caption paris
-
+"""
+This code augments a dataset of image caption pairs with new image caption pairs
+The class takes as input:
+--path to the training data set where the images are located
+-- filename of a csv which contains the list of images and caption pairs
+--num of new augmented images to be creadted
+--random seed
+The class ouputs
+---the augmented images in the "augment" folder
+---a file "augmented_data_1.csv" containing the name of the augmented images and the caption paris
+"""
 import os
 import pandas as pd
 from numpy import expand_dims

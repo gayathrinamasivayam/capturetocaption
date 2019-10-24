@@ -1,7 +1,19 @@
 
 """
 This is the main class for building the image caption generation model
+The program takes as input the following:
+--filename_data: filename of the preprocessed caption files
+--path_to_images: path to the folder containing the Images
+--frac_train: fraction of the data that is used for training
+--frac_valid: fraction of the remaining data that is used for validation during model building
+--random_state: to initialize the random seed
+--augmented_data_size: size of the augmented datagen
+--batch_size: batch size that is used for training the model
+--model_tanti_size: size of the dense and embedding
 
+Outputs:
+--testoutputsofas*.log file with the logged BLEU scores for 1-gram, 2-gram, 3-gram, 4-gram and cummulative 4-gram
+--test_results_*.csv file with the generated caption for the test results  
 """
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -38,7 +50,7 @@ import Augmentation
 
 class DataModelling:
 
-    def __init__(self,filename_data, path_to_images="/home/ubuntu/capturetocaption/data/raw/local_data/raw/sofas/", frac_train=0.8, frac_valid=0.8, random_state=4441, augmented_data_size=3000, batch_size=200, model_tanti_size=200):
+    def __init__(self,filename_data, path_to_images="/home/ubuntu/capturetocaption/data/raw/local_data/raw/sofas/", frac_train=0.8, frac_valid=0.8, random_state=4441, augmented_data_size=3000, batch_size=200, model_tanti_size=128):
 
         self.filename_prefix="ftrain_"+str(frac_train)+"fvalid_"+str(frac_valid)+"rstate_"+str(random_state)+"agdata_"+str(augmented_data_size)+"batch_"+str(batch_size)+"model_"+str(model_tanti_size)
         self.df = pd.DataFrame()
@@ -264,7 +276,7 @@ class DataModelling:
         logging.info(model.summary())
         return model
 
-    def __define_model_tanti_modified_LSTM_1(self, size=200, lstm_size=500 ):
+    def __define_model_tanti_modified_LSTM_1(self, size=256, lstm_size=500 ):
         #visual feature model
         logging.info("modified tanti with lstm_1, embedding size:"+str(size) +"LSTM size:"+str(lstm_size))
 

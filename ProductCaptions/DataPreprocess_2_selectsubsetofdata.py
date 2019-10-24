@@ -21,17 +21,21 @@ Input:
 DataPreprocess.py and after the duplicate images have been removed
 
 Output:
---file called "Amazon_furniture_editedcaptions_noduplicates_length"+len_of_sentence+".csv" file
---file called "Amazon_furniture_editedcaptions_noduplicates_length"+len_of_sentence+"_design.csv" file
+--file called "FurnitureEditedCaptions_noduplicates_length"+len_of_sentence+".csv" file
+--file called "FurnitureEditedCaptions_noduplicates_length"+len_of_sentence+"_design.csv" file
 The "_design.csv" filters only data that have captions with certain design elements in them
 
 The ouput of this python file can be used as input to Model.py
 """
-class DataPreprocess_2:
+class DataPreprocessing:
 
-    def __init__(self, len_of_sentence=2, filepath, filename):
-        os.pardir ="C:\\Users\\Gayathri\\Documents\\Insight\\ImageCaption\\capturetocaption\\data\\raw\\sofas\\"
-        self.df = pd.read_csv(os.pardir +"Amazon_furniture_editedcaptions_noduplicates.csv")
+    def __init__(self, filepath, inputfilename, outputfilename, len_of_sentence=2):
+        os.pardir = filepath
+        self.inputfilename=inputfilename
+        self.outputfilename=outputfilename
+        self.df = pd.read_csv(os.pardir +self.inputfilename)
+        self.df.dropna(inplace=True)
+        self.df.reset_index(drop=True, inplace=True)
         self.select_data(len_of_sentence)
 
     def select_data(self, len_of_sentence):
@@ -40,13 +44,13 @@ class DataPreprocess_2:
         index_other=[]
         for i in range(self.df.shape[0]):
             #remove words of length 1 from the caption except "l"
-            caption=(self.__class__df['caption_new'][i].split())
+            caption=(self.df['caption_new'][i].split())
             set_of_len1=set([word for word in caption if len(word)==1])-{'l'}
             if len(set_of_len1) >= 1:
                 for remove_word in set_of_len1:
                         while remove_word in caption:
                             caption.remove(remove_word)
-            df['caption_new'][i]=" ".join(caption)
+            self.df['caption_new'][i]=" ".join(caption)
             #only select captions with length greater than len_of_sentence
             if (len(caption) > len_of_sentence):
                 set_of_design={"bean","pillows","cushion","nailhead","fabric","linen","folding","bed","leather","velvet","chair","sectional","reclining","uphostered","tufted", "upholstered","loveseat"}
@@ -61,9 +65,9 @@ class DataPreprocess_2:
         print(len(index))
         print(count)
         print(len(index_other))
-        df_length=df.iloc[index_other]
-        df_length_design=df.iloc[index]
+        df_length=self.df.iloc[index_other]
+        df_length_design=self.df.iloc[index]
         df_length.reset_index(inplace=True)
         df_length_design.reset_index(inplace=True)
-        df_length.to_csv("Amazon_furniture_editedcaptions_noduplicates_length"+str(len_of_sentence)+".csv")
-        df_length_design.to_csv("Amazon_furniture_editedcaptions_noduplicates_length"+str(len_of_sentence)+"_design.csv")
+        df_length.to_csv(os.pardir+self.outputfilename+str(len_of_sentence)+".csv")
+        df_length_design.to_csv(os.pardir+self.outputfilename+str(len_of_sentence)+"_design.csv")

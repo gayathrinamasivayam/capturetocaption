@@ -1,10 +1,12 @@
 """
 This class removes duplicate images from the earlier preprocessed file list
 obtained on running DataPreprocess.py
+The methods to find duplicates here is based on the code available at
+https://github.com/moondra2017/Computer-Vision
 The input to the class is
 ---file path to the folder containing possible duplicate images
 The output is the list of duplicate images that can be removed
----"duplicate_images.csv" is the name of the file
+---"DuplicateImages.csv" is the name of the file
 """
 
 
@@ -17,20 +19,20 @@ import pandas as pd
 import os
 
 
-class DataPreprocess_1:
+class DataPreprocessing:
 
-        def __init__(self,filepath):
+        def __init__(self,filepath, processedfilesname, outputfilename):
             os.chdir(filepath)
             os.getcwd()
             self.files_list = os.listdir('.')
             self.duplicates = []
             self.files_to_remove=[]
             self.find_duplicates()
-            self.files_remove()
+            self.files_remove(processedfilesname, outputfilename)
 
-        def find_duplicates(self)
+        def find_duplicates(self):
             hash_keys = dict()
-            for index, filename in  enumerate(self.file_list):  #listdir('.') = current directory
+            for index, filename in  enumerate(self.files_list):  #listdir('.') = current directory
                 if os.path.isfile(filename):
                     with open(filename, 'rb') as f:
                         filehash = hashlib.md5(f.read()).hexdigest()
@@ -39,12 +41,18 @@ class DataPreprocess_1:
                     else:
                         self.duplicates.append((index,hash_keys[filehash]))
 
-        def files_remove(self):
+        def files_remove(self, processedfilesname, outputfilename):
             self.files_to_remove=[]
             for index in self.duplicates:
                 self.files_to_remove.append(files_list[index[0]])
-            df=pd.DataFrame(self.files_to_remove, column=['filaname'])
-            df.to_csv("duplicate_images.csv")
+            df_imgcap = pd.read_csv(processedfilesname)
+            index_duplicates=[]
+            for i in range(df_imgcap.shape[0]):
+                if df_imgcap['filename'][i] in self.files_to_remove:
+                    index_duplicates.append(i)
+            df_imgcap = df_imgcap.drop(index_duplicates, axis=0)
+            df_imgcap.reset_index(inplace=True)
+            df_imgcap.to_csv(outputfilename)
 
 
         def display_duplicates(self, num_of_images):
