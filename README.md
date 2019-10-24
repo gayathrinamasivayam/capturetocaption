@@ -9,7 +9,6 @@
 
 ![Model](/model.png)
 
-### Shown below are some of the results obtained using the systme
 ### The code and the documentation are being updated on this repository
 
 ## Setup
