@@ -9,9 +9,7 @@ DataPreprocess_0.py - is the main program for preprocessing the captions
 
 DataPreprocess_1_duplicateremoval.py - the program that removes duplicate images
 
-DataPreprocess_subsetselect_data.py -the program that can select a subset of good training data
-
-
+DataPreprocess_2_selectsubsetofdata* -the program  can select a subset of good training data eliminating noisy data, this is a customized program if the dataset is all sofas 
 
 
 
