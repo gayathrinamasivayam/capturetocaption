@@ -5,7 +5,7 @@
 ![Contemporary bonded leather sofa with square base pillows](/download.png)
 #### Generated Caption: "Contemporary bonded leather sofa with square base pillows"
 
-### The captioning system uses an encoder decoder architecture. It is based on the prior work done in the field of image captioning. The project was built on Keras with a Tensorflow backend. It consists of a lanugauage LSTM encoder, an image encoder which consists of pre-trained VGG 16 fed into a dense layer. It uses an LSTM decoder.
+### The captioning system uses an encoder decoder architecture. It is based on the prior work done in the field of image captioning. The project was built on Keras with a Tensorflow backend. It consists of a language LSTM encoder, an image encoder which consists of pre-trained VGG 16 fed into a dense layer. It uses an LSTM decoder.
 
 ![Model](/model.png)
 
