@@ -1,6 +1,6 @@
 # Caption as a Service
 
-### The aim of this project is to provide captions for products from their images. Online marketplaces are rapidly growing at a fast pace and the goal of this product is to provide instant image captioning system that can take an image of a product and produce an instant caption. We have currently trained the system using images of sofas and their captions from webscraped data.
+### The aim of this project is to provide captions for products from their images. This ia a novel idea for generating product captions from their images. Online marketplaces are rapidly growing at a fast pace and the goal of this product is to provide an instant image captioning system that can take an image of a product and produce an instant caption. We have currently trained the system using images of sofas and their captions from webscraped data.
 
 ![Contemporary bonded leather sofa with square base pillows](/download.png)
 #### Generated Caption: "Contemporary bonded leather sofa with square base pillows"
