@@ -7,7 +7,7 @@ Model.py - program that does the actual training and also can call the augmentat
 
 DataPreprocess_0.py - is the main program for preprocessing the captions
 
-DataPreprocess_duplicate_images.py - the program that removes duplicate images
+DataPreprocess_1_duplicateremoval.py - the program that removes duplicate images
 
 DataPreprocess_subsetselect_data.py -the program that can select a subset of good training data
 
