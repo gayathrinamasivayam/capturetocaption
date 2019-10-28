@@ -1,8 +1,7 @@
-
 """
 This is the main class for building the image caption generation model
 The program takes as input the following:
---filename_data: filename of the preprocessed caption files
+--path_to_filename_data: filename of the preprocessed caption files
 --path_to_images: path to the folder containing the Images
 --frac_train: fraction of the data that is used for training
 --frac_valid: fraction of the remaining data that is used for validation during model building
@@ -13,7 +12,9 @@ The program takes as input the following:
 
 Outputs:
 --testoutputsofas*.log file with the logged BLEU scores for 1-gram, 2-gram, 3-gram, 4-gram and cummulative 4-gram
---test_results_*.csv file with the generated caption for the test results  
+--test_results_*.csv file with the generated caption for the test results
+--ImageCaption_*model.h5 is the best model obtained using the parameters provided to the program
+--tokenizer_sofas_*.pickle is the tokenizer file used in building this model
 """
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -50,9 +51,7 @@ import Augmentation
 
 class DataModelling:
 
-    def __init__(self,filename_data, path_to_images="/home/ubuntu/capturetocaption/data/raw/local_data/raw/sofas/", frac_train=0.8, frac_valid=0.8, random_state=4441, augmented_data_size=3000, batch_size=200, model_tanti_size=128):
-
-        self.filename_prefix="ftrain_"+str(frac_train)+"fvalid_"+str(frac_valid)+"rstate_"+str(random_state)+"agdata_"+str(augmented_data_size)+"batch_"+str(batch_size)+"model_"+str(model_tanti_size)
+    def __init__(self,path_to_filename_data, path_to_images,augmented_data_size, frac_train=0.6, frac_valid=0.5, random_state=4441,  batch_size=200, model_tanti_size=128):
         self.df = pd.DataFrame()
         self.traindf= pd.DataFrame()
         self.validdf=pd.DataFrame()
@@ -60,11 +59,13 @@ class DataModelling:
         self.batch_size=batch_size
         self.size=model_tanti_size
         self.path_to_images=path_to_images
+        self.filename_prefix="ftrain_"+str(frac_train)+"fvalid_"+str(frac_valid)+"rstate_"+str(random_state)+"agdata_"+str(augmented_data_size)+"batch_"+str(batch_size)+"model_"+str(model_tanti_size)
+
         LOG_FILENAME = "testoutputsofas"+self.filename_prefix+".log"
         logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO)
         logging.info("Batch size :"+str(self.batch_size))
 
-        self.read_csv(self.path_to_images+filename_data, frac_train, frac_valid, random_state, augmented_data_size)
+        self.read_csv(path_to_filename_data, frac_train, frac_valid, random_state, augmented_data_size)
         self.__func_maxlen()
         ls_caption_train=self.__create_seq_captions(self.traindf)
         ls_caption_valid=self.__create_seq_captions(self.validdf)
@@ -94,9 +95,13 @@ class DataModelling:
         self.traindf.reset_index(drop=True, inplace=True)
         self.testdf.reset_index(drop=True, inplace=True)
         self.validdf.reset_index(drop=True, inplace=True)
-
         self.traindf.to_csv("train_sofas"+self.filename_prefix+".csv")
         self.validdf.to_csv("valid_sofas"+self.filename_prefix+".csv")
+        #print("Finsished writing file")
+        print("Training data set size:"+str(self.traindf.shape))
+        print("Testing data set size:"+str(self.validdf.shape))
+        #if(augmented_data_size <= )
+
         ag=Augmentation.augment_image(self.path_to_images, "train_sofas"+self.filename_prefix+".csv", augmented_data_size,random_state)
         self.traindf=pd.read_csv("augmented_data_1.csv")
         self.traindf.reset_index(drop=True, inplace=True)
@@ -146,6 +151,9 @@ class DataModelling:
         logging.info("vocab size"+str(self.vocab_size))
         with open('tokenizer_sofas_'+self.filename_prefix+'.pickle', 'wb') as handle:
             pickle.dump(self.t, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        self.tokenizer_name='tokenizer_sofas_'+self.filename_prefix+'.pickle'
+        #with open('tokenizer_sofas.pickle', 'wb') as handle:
+        #    pickle.dump(self.t, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 
 
@@ -181,11 +189,11 @@ class DataModelling:
         tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
                           write_graph=True, write_images=False)
         filepath="ImageCaption_"+self.filename_prefix+"model.h5"
+        #filepath="ImageCaption_model.h5"
         checkpoint = ModelCheckpoint(filepath, monitor='val_loss',  verbose=2, save_best_only=True, mode='auto')
         earlystop=EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=2, mode='auto', baseline=None)
         callbacks_list = [checkpoint, tensorboard, earlystop]
         history=self.model.fit([self.X1_features, self.X2], [self.Y], validation_data=([self.vX1_features, self.vX2],[self.vY]), callbacks=callbacks_list, batch_size=self.batch_size, epochs=50, verbose=2)
-
         #self.model.save("ImageCaption_"+self.filename_prefix+".h5")
         logging.info(self.__print_history(history))
         #self.generate_description_train()
@@ -193,6 +201,7 @@ class DataModelling:
         self.testdf.to_csv("test_results_"+self.filename_prefix+"model.csv")
         #self.traindf.to_csv("train_results_"+self.filename_prefix+".csv")
         self.add_score()
+        return self.tokenizer_name, filepath
 
     def __initialize_CNN_model(self):
         model = VGG16()
@@ -388,8 +397,3 @@ class DataModelling:
         logging.info(sum(total3) / len(total3) )
         logging.info(sum(total4) / len(total4) )
         #logging.info(count)
-
-
-
-dm = DataModelling("Amazon_furniture_editedcaptions_noduplicates_length2_design.csv")
-dm.build_model()

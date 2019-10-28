@@ -8,6 +8,7 @@ import os
 import DataPreprocess_0
 import DataPreprocess_1_duplicateremoval
 import DataPreprocess_2_selectsubsetofdata
+import Model
 #from pathlib import path
 
 class DataPipeline:
@@ -18,31 +19,37 @@ class DataPipeline:
         self.processedimagecaptiondatafile="FurnitureEditedCaptions.csv"
         self.duplicateimagesdatafile="FurnitureEditedCaptions_noduplicates.csv"
         self.subsetselectdatafileprefix="FurnitureEditedCaptions_noduplicates_length"
-        #self.preprocess_data(filepath)
-        print("here"+filepath)
-        #self.remove_duplicate_data(filepath)
+        print("Preprocessing Data")
+        self.preprocess_data(filepath)
+        #print("here"+filepath)
+        print("Removing Duplicate Images")
+        self.remove_duplicate_data(filepath)
+        print("Selecting a Subset of Data")
         self.select_subset_data(filepath)
+        print("Augmenting and training data")
+        self.train_data(filepath)
 
     def preprocess_data(self, filepath):
         path=os.path.join(filepath,"Data")
-        #path=os.path+self.imagecaptiondatafile
-        print(path)
+        #print(path)
         file=str(path)+"\\"+self.imagecaptiondatafile
         if os.path.isfile(file):
-          print("Fileexists")
+          #print("Fileexists")
           d=DataPreprocess_0.DataPreprocessing(str(path)+"\\", self.imagecaptiondatafile, self.processedimagecaptiondatafile)
           d.preprocess_caption()
         else:
           print("Cannot locate file"+" "+self.imagecaptiondatafile)
 
     def remove_duplicate_data(self, filepath):
-        print(filepath)
-        #path=os.path.join(filepath,"\\Data\\Images\\")
-        #print(path)
         DataPreprocess_1_duplicateremoval.DataPreprocessing(filepath+"\\Data\\Images", filepath+"\\Data\\"+self.processedimagecaptiondatafile, str(filepath)+"\\Data\\"+self.duplicateimagesdatafile)
 
     def select_subset_data(self, filepath):
         path=os.path.join(filepath,"Data")
         DataPreprocess_2_selectsubsetofdata.DataPreprocessing(str(path)+"\\",self.duplicateimagesdatafile, self.subsetselectdatafileprefix )
+
+    def train_data(self, filepath):
+        path=os.path.join(filepath,"Data")
+        dm = Model.DataModelling(str(path)+"\\"+"FurnitureEditedCaptions_noduplicates_length2_design.csv", filepath+"\\Data\\Images\\", 10)
+        tokenizer, bestmodel=dm.build_model()
 
 D= DataPipeline()

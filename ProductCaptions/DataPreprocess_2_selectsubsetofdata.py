@@ -37,6 +37,7 @@ class DataPreprocessing:
         self.df.dropna(inplace=True)
         self.df.reset_index(drop=True, inplace=True)
         self.select_data(len_of_sentence)
+        self.newdf=pd.DataFrame()
 
     def select_data(self, len_of_sentence):
         count=0
@@ -50,21 +51,22 @@ class DataPreprocessing:
                 for remove_word in set_of_len1:
                         while remove_word in caption:
                             caption.remove(remove_word)
-            self.df['caption_new'][i]=" ".join(caption)
+            self.df.loc[i,'caption_new']=" ".join(caption)
             #only select captions with length greater than len_of_sentence
             if (len(caption) > len_of_sentence):
                 set_of_design={"bean","pillows","cushion","nailhead","fabric","linen","folding","bed","leather","velvet","chair","sectional","reclining","uphostered","tufted", "upholstered","loveseat"}
                 #check if there is an intersection between the set of design vocabulary and the set of captions then store that caption adn image pair
                 if bool(set_of_design & set(caption)):
-                    print(caption)
+                    #print(caption)
                     count=count+1
                     index.append(i) #index that match both the if condition above
                 index_other.append(i) #index that match just captions greater than length 2
 
         #df.drop(index,inplace=True)
-        print(len(index))
-        print(count)
-        print(len(index_other))
+        #print(len(index))
+        #print(count)
+        #print(len(index_other))
+        #self.df['caption_new']=self.df['caption_new_1']
         df_length=self.df.iloc[index_other]
         df_length_design=self.df.iloc[index]
         df_length.reset_index(inplace=True)

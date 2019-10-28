@@ -125,7 +125,7 @@ class DataPreprocessing:
         for i in range(0,self.len_traindir):
             caption = self.outputdf['caption'][i]
             caption=caption.lower()
-            print(caption)
+            #print(caption)
             firstwords= caption.split()
             max_val=capdict[" ".join(firstwords[0:0])]
             captindex=0
@@ -141,7 +141,7 @@ class DataPreprocessing:
         #combine the furniture names with the existing list of brands and
         #delete those from the dictoinary
         set_captlist=set(captlist+self.brands)
-        print(set_captlist)
+        #print(set_captlist)
         newcol=[]
         for i in range(0,self.outputdf.shape[0]):
             assigned=False

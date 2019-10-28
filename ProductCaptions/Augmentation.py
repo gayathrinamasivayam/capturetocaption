@@ -32,17 +32,16 @@ class augment_image:
             print(self.df.columns)
         #except:
             #remove any pre-exisitng files in the augment folder
-            files = glob.glob(path_to_images+"augmented/*")
+            files = glob.glob(path_to_images+"augmented\\*")
             for f in files:
                 os.remove(f)
             self.__generate_images(numofimages, path_to_images, random_seed)
             self.__generate_captions(path_to_images)
 
     def __generate_images(self, numofimages, path_to_images, random_seed):
-    """
-    Generate new augmented images
-
-    """
+        """
+        Generate new augmented images
+        """
         self.dict_captions={}
         self.dict_oldcaptions={}
         self.dict_newcaptions={}
@@ -71,9 +70,9 @@ class augment_image:
             """
 
     def __generate_captions(self, path_to_images):
-    """
-    Create captions for the augment
-    """
+        """
+        Create captions for the augment
+        """
         files = [f for f in listdir(path_to_images+"augmented") if isfile(join(path_to_images+"augmented", f))]
         print(files)
         df1 = pd.DataFrame(columns=['filename','caption_old','caption','caption_new'])

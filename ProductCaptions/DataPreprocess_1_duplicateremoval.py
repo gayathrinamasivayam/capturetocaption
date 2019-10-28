@@ -44,7 +44,7 @@ class DataPreprocessing:
         def files_remove(self, processedfilesname, outputfilename):
             self.files_to_remove=[]
             for index in self.duplicates:
-                self.files_to_remove.append(files_list[index[0]])
+                self.files_to_remove.append(self.files_list[index[0]])
             df_imgcap = pd.read_csv(processedfilesname)
             index_duplicates=[]
             for i in range(df_imgcap.shape[0]):
