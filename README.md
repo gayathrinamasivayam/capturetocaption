@@ -5,7 +5,7 @@
 ![Contemporary bonded leather sofa with square base pillows](/download.png)
 #### Generated Caption: "Contemporary bonded leather sofa with square base pillows"
 
-### The captioning system uses an encoder decoder architecture. It is based on the prior work done in the field of image captioning [1,2,3] and has been modified for this particular use case. The project was built on Keras with a Tensorflow backend. It consists of a language LSTM encoder, an image encoder which consists of pre-trained VGG 16 fed into a dense layer. It uses an LSTM decoder. All parts of the encoder and decoder have been trained and learnt except for the features extracted from the last but one layer of VGG16 of the image. 
+### The captioning system uses an encoder decoder architecture. It is based on the prior work done in the field of image captioning [1,2] and has been modified for this particular use case. The project was built on Keras with a Tensorflow backend. It consists of a language LSTM encoder, an image encoder which consists of pre-trained VGG 16 fed into a dense layer. It uses an LSTM decoder. All parts of the encoder and decoder have been trained and learnt except for the features extracted from the last but one layer of VGG16 of the image. 
 
 ![Model](/model.png)
 
@@ -17,7 +17,7 @@ Clone repository and update python path
 git clone https://github.com/gayathrinamasivayam/capturetocaption.git
 
 ```
-## References
-## [1] Tanti, M., Gatt, A., and Camilleri, K. P. (2018). Where to put the image in an image caption generator. Natural Language Engineering, 24(3):467–489.
-## [2] Ryan Kiros, Ruslan Salakhutdinov, Richard S. Zemel. "Multimodal Neural Language Models." ICML (2014).
+#### References
+#### [1] Tanti, M., Gatt, A., and Camilleri, K. P. (2018). Where to put the image in an image caption generator. Natural Language Engineering, 24(3):467–489.
+#### [2] Ryan Kiros, Ruslan Salakhutdinov, Richard S. Zemel. "Multimodal Neural Language Models." ICML (2014).
 
