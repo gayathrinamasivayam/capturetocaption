@@ -20,4 +20,7 @@ git clone https://github.com/gayathrinamasivayam/capturetocaption.git
 #### References
 #### [1] Tanti, M., Gatt, A., and Camilleri, K. P. (2018). Where to put the image in an image caption generator. Natural Language Engineering, 24(3):467–489.
 #### [2] Ryan Kiros, Ruslan Salakhutdinov, Richard S. Zemel. "Multimodal Neural Language Models." ICML (2014).
+#### [3] Kelvin Xu, Jimmy Lei Ba, Ryan Kiros, Kyunghyun Cho, Aaron Courville, Ruslan Salakhutdinov, Richard S. Zemel, and Yoshua Bengio. 2015. Show, attend and tell: neural image caption generation with visual attention. In Proceedings of the 32nd International Conference on International Conference on Machine Learning - Volume 37 (ICML'15), Francis Bach and David Blei (Eds.), Vol. 37. JMLR.org 2048-2057.
+
+
 
