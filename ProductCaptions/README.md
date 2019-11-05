@@ -11,5 +11,7 @@ DataPreprocess_1_duplicateremoval.py - the program that removes duplicate images
 
 DataPreprocess_2_selectsubsetofdata -the program  can select a subset of good training data eliminating noisy data, this is a customized program that can be used only if the dataset is all sofas 
 
+Since the data was webscraped only a sample of it is available in the "ProductCaptions/Data/FurnitureImageGeneration.csv". The images can be viewed in "ProductCaptions/Data/Images/" folder
+
 
 
