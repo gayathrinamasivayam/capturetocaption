@@ -17,7 +17,7 @@ Clone repository and update python path
 git clone https://github.com/gayathrinamasivayam/capturetocaption.git
 
 ```
-## Train
+## Training (including data preprocessing)
 To train and build the model on the sample dataset
 ```
 python train.py
