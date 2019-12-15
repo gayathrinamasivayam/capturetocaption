@@ -1,4 +1,4 @@
-src/tain.py - program can run some of the data preprocessing  which includes preprocessing text, removing duplicate images and subselecting a portion of their training dataset by eliminating training data that is noisy and finallt training the data
+src/tain.py - program can run some of the data preprocessing  which includes preprocessing text, removing duplicate images and subselecting a portion of their training dataset by eliminating training data that is noisy and train the data
 
 src/augmentation.py - program that can provide augmented data given an existing training dataset with images and caption pairs, it can 
 provide an additional augmented dataset
@@ -21,7 +21,7 @@ Data/Brands.txt - file that contains some of the furniture brand names
 
 Data/Images/* - contains all the image files correspoding to that in Data/FurnitureImageGeneration.csv 
 
-Data/Images/augmented/* - folder that contains the augmented files created during training when you use the module augmentation.py 
+Data/Images/augmented/* - folder that contains the augmented image files created during training when you use the module augmentation.py 
 
 All of the generated files for each of the datapreprocess_*.py programs will be created in the Data/ folder
 
