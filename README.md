@@ -17,6 +17,16 @@ Clone repository and update python path
 git clone https://github.com/gayathrinamasivayam/capturetocaption.git
 
 ```
+## Train
+To train and build the model on the sample dataset
+```
+python train.py
+```
+## Inference
+To test an image of a sofa on the existing pre-trained model and tokenizer
+```
+python inference.py 
+```
 #### References
 #### [1] Tanti, M., Gatt, A., and Camilleri, K. P. (2018). Where to put the image in an image caption generator. Natural Language Engineering, 24(3):467–489.
 #### [2] Ryan Kiros, Ruslan Salakhutdinov, Richard S. Zemel. "Multimodal Neural Language Models." ICML (2014).
