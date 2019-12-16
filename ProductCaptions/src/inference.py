@@ -1,15 +1,11 @@
-
 from keras.models import load_model
-
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
-
 from keras.preprocessing import image
 from keras.applications.vgg16 import VGG16
 from keras.applications.vgg16 import preprocess_input
 from keras.preprocessing.image import img_to_array
-
 from keras.models import Model
 from keras.layers import Input
 import pandas as pd
@@ -19,12 +15,15 @@ import numpy as np
 import cv2
 from numpy import argmax
 from pathlib import Path
+
 #import pydot
 #from keras.utils import plot_model
+
 import timeit
 import time
 import argparse
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 class load_test:
     """
     This program can be used to obtain a description of any image containing a sofa

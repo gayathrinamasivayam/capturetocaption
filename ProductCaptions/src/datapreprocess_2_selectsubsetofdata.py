@@ -7,7 +7,7 @@ class DataPreprocessing:
     the output obtained after running the earlier data preprocessing programs: DataPreprocess.py
     and DataPreprocess_1_duplicateremoval.py
 
-    The class depeneds on the output file obtained from DataPreprocess_1_duplicateremoval.py
+    The class depends on the output file obtained from DataPreprocess_1_duplicateremoval.py
 
     This preprocessing could have been merged with the DataPreprocess_0.py preprocessing file. However,
     due to the following reasons it has been left as a standalone programs:

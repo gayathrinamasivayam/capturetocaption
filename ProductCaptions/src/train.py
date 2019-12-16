@@ -6,9 +6,10 @@ import model
 import errno
 from pathlib import Path
 
+
 class DataPipeline:
     """
-    This script can be used to run through all of the datapipeline phases
+    This class can be used to run through all of the datapipeline phases
     --datapreprocessing--duplicateimageremoval--datasubsetselection
 
     It assumes that the current working directory is where all the following files are:
@@ -25,7 +26,6 @@ class DataPipeline:
     It assumes that there exists an "Image" folder from current working directory which contains
         the image files whose filenames are provided in the FurnitureImageGeneration.csv file
     """
-
     def __init__(self):
         """
         Creates variable names for all of the intermediate output files produced by the three

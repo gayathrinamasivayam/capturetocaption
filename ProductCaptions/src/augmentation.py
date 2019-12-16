@@ -25,8 +25,6 @@ class augment_image:
     numofimages: num of new augmented images to be creadted
     random seed: default value is set to 363 but can be used to re-create the same
                 augmented dictonary
-    The class ouputs
-
     """
 
     def __init__(self, path_to_images, filename, numofimages=0, random_seed=363):
