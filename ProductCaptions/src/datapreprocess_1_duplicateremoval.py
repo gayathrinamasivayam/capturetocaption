@@ -1,11 +1,10 @@
 import hashlib
-#from scipy.misc import imread, imresize, imshow
 import matplotlib.pyplot as plt
 import time #not needed
 import numpy as np
 import pandas as pd
 import os
-
+#from scipy.misc import imread, imresize, imshow
 
 class DataPreprocessing:
         """
@@ -13,6 +12,7 @@ class DataPreprocessing:
         obtained on running DataPreprocess.py
         The methods to find duplicates here is based on the code available at
         https://github.com/moondra2017/Computer-Vision
+        
         Args:
         filepath: file path to the folder containing all the images
         processedfilesname: name of the .csv file that contains the processesed FurnitureEditedCaptions
@@ -75,7 +75,7 @@ class DataPreprocessing:
             #This code can be run to display all the duplicate images that were removed
             #Args:
             #    num_of_images: the number of removed images that you want to display
-            
+
             # if num_of_images > len(self.duplicates)
             #   raise ValueError("num_of_images is more than the number of duplicates")
             for file_indexes in self.duplicates[:num_of_images]:

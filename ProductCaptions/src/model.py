@@ -1,19 +1,15 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import numpy as np
 import cv2
-
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
-
 from keras.preprocessing import image
 from keras.applications.vgg16 import VGG16
 from keras.applications.vgg16 import preprocess_input
 from keras.preprocessing.image import img_to_array
-
 from keras.models import Model
 from keras.layers import Input, Dense, Dropout, LSTM, Embedding, concatenate, RepeatVector, TimeDistributed, Bidirectional
 from keras.layers.merge import add
@@ -25,14 +21,13 @@ from keras.utils import plot_model
 from numpy import argmax
 import logging
 import pickle
-
 from nltk.translate.bleu_score import SmoothingFunction
 from nltk.translate.bleu_score import sentence_bleu
 from nltk.translate.bleu_score import corpus_bleu
-
 import augmentation
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 class DataModelling:
     """
     This is the main class for building the image caption generation model
