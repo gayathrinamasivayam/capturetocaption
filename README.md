@@ -12,12 +12,14 @@
 ### The code and the documentation are being updated on this repository
 
 ## Setup
-Create a new conda environment, clone repository and install the depedencies
+Create a new conda environment after downloading Anaconda, then clone the repository and install the depedencies
 ```
+conda create -n captionrepo
+conda activate captionrepo
 git clone https://github.com/gayathrinamasivayam/capturetocaption.git
+cd capturetocaption/
 cd ProductCaption/
-pip install -r requirements.txt
-cd src
+pip install --user -r requirements.txt
 ```
 ## Training (including data preprocessing)
 To train and build the model on the sample dataset with predefined args and hyperparameters
