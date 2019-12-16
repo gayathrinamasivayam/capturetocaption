@@ -24,7 +24,7 @@ from pathlib import Path
 import timeit
 import time
 import argparse
-
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 class load_test:
     """
     This program can be used to obtain a description of any image containing a sofa

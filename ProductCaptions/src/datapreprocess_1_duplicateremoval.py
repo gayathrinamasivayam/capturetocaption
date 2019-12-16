@@ -1,5 +1,5 @@
 import hashlib
-from scipy.misc import imread, imresize, imshow
+#from scipy.misc import imread, imresize, imshow
 import matplotlib.pyplot as plt
 import time #not needed
 import numpy as np
@@ -69,13 +69,13 @@ class DataPreprocessing:
             df_imgcap.reset_index(inplace=True)
             df_imgcap.to_csv(self.outputfilename)
 
-
+        """
         def display_duplicates(self, num_of_images):
-            """
-            This code can be run to display all the duplicate images that were removed
-            Args:
-                num_of_images: the number of removed images that you want to display
-            """
+
+            #This code can be run to display all the duplicate images that were removed
+            #Args:
+            #    num_of_images: the number of removed images that you want to display
+            
             # if num_of_images > len(self.duplicates)
             #   raise ValueError("num_of_images is more than the number of duplicates")
             for file_indexes in self.duplicates[:num_of_images]:
@@ -90,3 +90,4 @@ class DataPreprocessing:
 
                 except OSError as e:
                     continue
+        """

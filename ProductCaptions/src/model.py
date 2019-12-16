@@ -31,7 +31,8 @@ from nltk.translate.bleu_score import sentence_bleu
 from nltk.translate.bleu_score import corpus_bleu
 
 import augmentation
-
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 class DataModelling:
     """
     This is the main class for building the image caption generation model
@@ -217,13 +218,13 @@ class DataModelling:
         logging.info("calling modified marc_tanti "+str(self.size))
         self.model= self.__define_model_tanti_modified_LSTM_1(self.size, 200)
         #plot_model(self.model, to_file='model3.png')
-        tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
-                          write_graph=True, write_images=False)
+        #tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
+        #                  write_graph=True, write_images=False)
         filepath="ImageCaption_"+self.filename_prefix+"model.h5"
         #filepath="ImageCaption_model.h5"
         checkpoint = ModelCheckpoint(filepath, monitor='val_loss',  verbose=2, save_best_only=True, mode='auto')
         earlystop=EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=2, mode='auto', baseline=None)
-        callbacks_list = [checkpoint, tensorboard, earlystop]
+        callbacks_list = [checkpoint, earlystop]
         history=self.model.fit([self.X1_features, self.X2], [self.Y], validation_data=([self.vX1_features, self.vX2],[self.vY]), callbacks=callbacks_list, batch_size=self.batch_size, epochs=50, verbose=2)
         #self.model.save("ImageCaption_"+self.filename_prefix+".h5")
         logging.info(self.__print_history(history))
