@@ -12,20 +12,24 @@
 ### The code and the documentation are being updated on this repository
 
 ## Setup
-Clone repository and update python path
+Create a new conda environment, clone repository and install the depedencies
 ```
 git clone https://github.com/gayathrinamasivayam/capturetocaption.git
-
+cd ProductCaption/
+pip install -r requirements.txt
+cd src
 ```
 ## Training (including data preprocessing)
-To train and build the model on the sample dataset
+To train and build the model on the sample dataset with predefined args and hyperparameters
 ```
+cd src
 python train.py
 ```
 ## Inference
 To test an image of a sofa on the existing pre-trained model and tokenizer
 ```
-python inference.py 
+cd src
+python inference.py [--filepath <path_to_image_file> --filename <name_of_the_image_file>] 
 ```
 #### References
 #### [1] Tanti, M., Gatt, A., and Camilleri, K. P. (2018). Where to put the image in an image caption generator. Natural Language Engineering, 24(3):467–489.
