@@ -17,7 +17,7 @@ Create a new conda environment after downloading Anaconda, then clone the reposi
 conda create -n captionrepo
 conda activate captionrepo
 git clone https://github.com/gayathrinamasivayam/capturetocaption.git
-cd capturetocaption/
+cd capturetocaptions/
 cd ProductCaption/
 pip install --user -r requirements.txt
 ```
