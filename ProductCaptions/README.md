@@ -13,19 +13,19 @@ src/datapreprocess_2_selectsubsetofdata.py -the program  can select a subset of 
 
 src/inference.py-the program that can be used to evaluate an image of a sofa on our pre-trained caption generator
 
-Since the data was webscraped only a sample of it is available in the "ProductCaptions/Data/FurnitureImageGeneration.csv". The images can be viewed in "ProductCaptions/Data/Images/" folder
+Since the data was webscraped only a sample of it is available in the "ProductCaptions/data/FurnitureImageGeneration.csv". The images can be viewed in "ProductCaptions/data/images/" folder
 
-Data/FurnitureImageGeneration.csv - file that contains some sample training data
+data/FurnitureImageGeneration.csv - file that contains some sample training data
 
-Data/Brands.txt - file that contains some of the furniture brand names 
+data/Brands.txt - file that contains some of the furniture brand names 
 
-Data/Images/* - contains all the image files correspoding to that in Data/FurnitureImageGeneration.csv 
+data/images/* - contains all the image files correspoding to that in data/FurnitureImageGeneration.csv 
 
-Data/Images/augmented/* - folder that contains the augmented image files created during training when you use the module augmentation.py 
+data/images/augmented/* - folder that contains the augmented image files created during training when you use the module augmentation.py 
 
-All of the generated files for each of the datapreprocess_*.py programs will be created in the Data/ folder
+All of the generated files for each of the datapreprocess_*.py programs will be created in the data/ folder
 
-The trained model and the tokenizer can be accessed from the Data/Images/ folder
+The trained model and the tokenizer can be accessed from the data/models/ folder
 
 
 
