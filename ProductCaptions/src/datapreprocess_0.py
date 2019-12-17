@@ -184,7 +184,7 @@ class DataPreprocessing:
             for j in range(1, len_furniture_name):
                 currcaption = " ".join(firstwords[0:j])
                 #print(currcaption)
-                if capdict[currcaption] < max_val and capdict[currcaption]>2:
+                if capdict[currcaption] >= max_val and capdict[currcaption]>2:
                     max_val=capdict[currcaption]
                     captindex=j
                     captlist.append(" ".join(firstwords[0:captindex]))
