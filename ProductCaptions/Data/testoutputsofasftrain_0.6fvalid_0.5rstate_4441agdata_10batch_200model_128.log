@@ -1,0 +1,821 @@
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.12387873994334853
+INFO:root:0.04163117806131066
+INFO:root:0.251798148112213
+INFO:root:0.18350176331652648
+INFO:root:0.14440937778819604
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.1674589572721489
+INFO:root:0.1258163324640792
+INFO:root:0.25316402642340335
+INFO:root:0.19036483756070194
+INFO:root:0.15299080498710133
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.14412083742498202
+INFO:root:0.07420882679682693
+INFO:root:0.27186770442481206
+INFO:root:0.2004187041234772
+INFO:root:0.15902384120077084
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.19331702183610286
+INFO:root:0.06666666666666668
+INFO:root:0.3746664059103657
+INFO:root:0.27255078344789024
+INFO:root:0.2141767440584433
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.0079401382678961
+INFO:root:0.024893534183931972
+INFO:root:0.006061632515907651
+INFO:root:0.0054037230537990035
+INFO:root:0.004874645247701491
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.13705683749278455
+INFO:root:0.0679558750627594
+INFO:root:0.24427426846012992
+INFO:root:0.18205660831697265
+INFO:root:0.14527999599719427
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.1674589572721489
+INFO:root:0.1258163324640792
+INFO:root:0.25316402642340335
+INFO:root:0.19036483756070194
+INFO:root:0.15299080498710133
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.07197270557912354
+INFO:root:0.09196986029286058
+INFO:root:0.07985682557521137
+INFO:root:0.06561381453371772
+INFO:root:0.05568246588871535
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.03433321535639828
+INFO:root:0.061313240195240384
+INFO:root:0.033135150726852344
+INFO:root:0.02807727273732557
+INFO:root:0.024359017742712957
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.014761835918485174
+INFO:root:0.04628058790111916
+INFO:root:0.011269429017347952
+INFO:root:0.010046282618483027
+INFO:root:0.009062652422356347
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:No candidate for computing Bleu scores
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.14972670921967618
+INFO:root:0.1522223311043313
+INFO:root:0.19520119683697312
+INFO:root:0.15047144100974935
+INFO:root:0.12268430299735522
+INFO:root:Batch size :200
+INFO:root:Training size:(8, 9)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:8
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.0079401382678961
+INFO:root:0.024893534183931972
+INFO:root:0.006061632515907651
+INFO:root:0.0054037230537990035
+INFO:root:0.004874645247701491
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:No candidate for computing Bleu scores
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.19083406736759848
+INFO:root:0.09786324786324789
+INFO:root:0.3258457296644478
+INFO:root:0.24483359007840855
+INFO:root:0.19630609899671067
+INFO:root:Batch size :200
+INFO:root:Batch size :200
+INFO:root:Batch size :200
+INFO:root:Batch size :200
+INFO:root:Batch size :200
+INFO:root:Batch size :200
+INFO:root:Batch size :200
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:No candidate for computing Bleu scores
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.1844599514170733
+INFO:root:0.13282828282828282
+INFO:root:0.24616004875804273
+INFO:root:0.2420277607189595
+INFO:root:0.19450746275446418
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.21625498394615908
+INFO:root:0.10000000000000002
+INFO:root:0.3746664059103657
+INFO:root:0.27255078344789024
+INFO:root:0.2141767440584433
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.18184804078107475
+INFO:root:0.05000000000000001
+INFO:root:0.3746664059103657
+INFO:root:0.27255078344789024
+INFO:root:0.2141767440584433
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.14592481806995883
+INFO:root:0.08638593981478904
+INFO:root:0.23073577090716005
+INFO:root:0.1714207367255901
+INFO:root:0.13644618413104434
+INFO:root:Batch size :200
+INFO:root:Training size:(18, 10)
+INFO:root:Validation size:(2, 9)
+INFO:root:Test size:(3, 9)
+INFO:root:maxlen21
+INFO:root:18
+INFO:root:2
+INFO:root:vocab size70
+INFO:root:building model here
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:here
+INFO:root:done
+INFO:root:creating list of features
+INFO:root:Done
+INFO:root:finished creating training and validation features
+INFO:root:calling modified marc_tanti 128
+INFO:root:modified tanti with lstm_1, embedding size:128LSTM size:200
+INFO:root:None
+INFO:root:dict_keys(['val_loss', 'loss'])
+INFO:root:None
+INFO:root:here
+INFO:root:done
+INFO:root:0.09943242370028584
+INFO:root:0.10951014637570149
+INFO:root:0.14513036460440498
+INFO:root:0.11116949378002648
+INFO:root:0.09032653490725019
