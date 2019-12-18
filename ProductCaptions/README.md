@@ -1,4 +1,4 @@
-src/tain.py - program can run some of the data preprocessing  which includes preprocessing text, removing duplicate images and subselecting a portion of their training dataset by eliminating training data that is noisy and train the data
+src/train.py - program can run some of the data preprocessing  which includes preprocessing text, removing duplicate images and subselecting a portion of their training dataset by eliminating training data that is noisy and train the data
 
 src/augmentation.py - program that can provide augmented data given an existing training dataset with images and caption pairs, it can 
 provide an additional augmented dataset
