@@ -1,19 +1,15 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import numpy as np
 import cv2
-
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
-
 from keras.preprocessing import image
 from keras.applications.vgg16 import VGG16
 from keras.applications.vgg16 import preprocess_input
 from keras.preprocessing.image import img_to_array
-
 from keras.models import Model
 from keras.layers import Input, Dense, Dropout, LSTM, Embedding, concatenate, RepeatVector, TimeDistributed, Bidirectional
 from keras.layers.merge import add
@@ -25,12 +21,12 @@ from keras.utils import plot_model
 from numpy import argmax
 import logging
 import pickle
-
 from nltk.translate.bleu_score import SmoothingFunction
 from nltk.translate.bleu_score import sentence_bleu
 from nltk.translate.bleu_score import corpus_bleu
-
 import augmentation
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 class DataModelling:
     """
@@ -60,10 +56,11 @@ class DataModelling:
         self.batch_size=batch_size
         self.size=model_tanti_size
         self.path_to_images=path_to_images
+        self.path_to_data=path_to_images.parents[0]
         self.filename_prefix="ftrain_"+str(frac_train)+"fvalid_"+str(frac_valid)+"rstate_"+str(random_state)+"agdata_"+str(augmented_data_size)+"batch_"+str(batch_size)+"model_"+str(model_tanti_size)
 
         LOG_FILENAME = "testoutputsofas"+self.filename_prefix+".log"
-        logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO)
+        logging.basicConfig(filename=self.path_to_data/LOG_FILENAME,level=logging.INFO)
         logging.info("Batch size :"+str(self.batch_size))
 
         self.read_csv(path_to_filename_data, frac_train, frac_valid, random_state, augmented_data_size)
@@ -87,20 +84,26 @@ class DataModelling:
         self.traindf.dropna(inplace=True)
         self.testdf.dropna(inplace=True)
         self.validdf.dropna(inplace=True)
+        #print("Training size:"+str(self.traindf.shape))
 
         self.traindf.reset_index(drop=True, inplace=True)
         self.testdf.reset_index(drop=True, inplace=True)
         self.validdf.reset_index(drop=True, inplace=True)
-        self.traindf.to_csv("train_sofas"+self.filename_prefix+".csv")
-        self.validdf.to_csv("valid_sofas"+self.filename_prefix+".csv")
+        training_data_file = "train_sofas"+self.filename_prefix+".csv"
+        validation_data_file = "valid_sofas"+self.filename_prefix+".csv"
+        self.traindf.to_csv(self.path_to_data/training_data_file)
+        self.validdf.to_csv(self.path_to_data/validation_data_file)
 
         #print("Finsished writing file")
-        print("Training data set size:"+str(self.traindf.shape))
-        print("Testing data set size:"+str(self.validdf.shape))
+        #print("Training data set size:"+str(self.traindf.shape))
+        #print("Testing data set size:"+str(self.validdf.shape))
 
-        ag=augmentation.augment_image(self.path_to_images, "train_sofas"+self.filename_prefix+".csv", augmented_data_size,random_state)
-        self.traindf=pd.read_csv("augmented_data_1.csv")
+        augmentation.augment_image(self.path_to_images, self.path_to_data, "train_sofas"+self.filename_prefix+".csv", augmented_data_size,random_state)
+        #print("Parent dir {}".format(os.getcwd()))
+        self.traindf=pd.read_csv(self.path_to_data/"augmented_data_1.csv")
         self.traindf.reset_index(drop=True, inplace=True)
+        #print("Training size:"+str(self.traindf.shape))
+        #print("Validation size:"+str(self.validdf.shape))
         logging.info("Training size:"+str(self.traindf.shape))
         logging.info("Validation size:"+str(self.validdf.shape))
         logging.info("Test size:"+str(self.testdf.shape))
@@ -152,7 +155,8 @@ class DataModelling:
         self.t.fit_on_texts(self.ls_caption)
         self.vocab_size = len(self.t.word_index) + 1
         logging.info("vocab size"+str(self.vocab_size))
-        with open('tokenizer_sofas_'+self.filename_prefix+'.pickle', 'wb') as handle:
+        picklefile='tokenizer_sofas_'+self.filename_prefix+'.pickle'
+        with open(self.path_to_data/"models"/picklefile, 'wb') as handle:
             pickle.dump(self.t, handle, protocol=pickle.HIGHEST_PROTOCOL)
         self.tokenizer_name='tokenizer_sofas_'+self.filename_prefix+'.pickle'
 
@@ -217,19 +221,23 @@ class DataModelling:
         logging.info("calling modified marc_tanti "+str(self.size))
         self.model= self.__define_model_tanti_modified_LSTM_1(self.size, 200)
         #plot_model(self.model, to_file='model3.png')
-        tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
-                          write_graph=True, write_images=False)
-        filepath="ImageCaption_"+self.filename_prefix+"model.h5"
+        #tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
+        #                  write_graph=True, write_images=False)
+        #model_file = "ImageCaption_"+self.filename_prefix+"{epoch:02d}--{loss:.4f}model.h5"
+        model_file = "ImageCaption_"+self.filename_prefix+"model.h5"
+
+        #filepath="/output/weights-1-{epoch:02d}-{loss:.4f}.hdf5"
+        filepath=self.path_to_data/"models"
+        filepath=os.path.join(filepath, model_file)
         #filepath="ImageCaption_model.h5"
         checkpoint = ModelCheckpoint(filepath, monitor='val_loss',  verbose=2, save_best_only=True, mode='auto')
         earlystop=EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=2, mode='auto', baseline=None)
-        callbacks_list = [checkpoint, tensorboard, earlystop]
+        callbacks_list = [checkpoint, earlystop]
         history=self.model.fit([self.X1_features, self.X2], [self.Y], validation_data=([self.vX1_features, self.vX2],[self.vY]), callbacks=callbacks_list, batch_size=self.batch_size, epochs=50, verbose=2)
-        #self.model.save("ImageCaption_"+self.filename_prefix+".h5")
         logging.info(self.__print_history(history))
-        #self.generate_description_train()
         self.generate_description_test()
-        self.testdf.to_csv("test_results_"+self.filename_prefix+"model.csv")
+        testing_data_file="test_results_"+self.filename_prefix+"model.csv"
+        self.testdf.to_csv(self.path_to_data/testing_data_file)
         #self.traindf.to_csv("train_results_"+self.filename_prefix+".csv")
         self.add_score()
         return self.tokenizer_name, filepath
@@ -295,8 +303,8 @@ class DataModelling:
     def __define_model_tanti_modified(self, size=200):
         """
         Intantiates a deep learning model
-        method add the features from the image and the language
-        and feeds it to a dense layer decoder
+        wherein the features from the image and the language encoded are added
+        and fed into to a dense layer decoder
 
         Args:
         size: a parameter to many of the units in the layers of the model
@@ -332,7 +340,7 @@ class DataModelling:
     def __define_model_tanti_modified_concat(self, size=200):
         """
         Intantiates a deep learning model
-        method concatenates the features from the image and the language
+        model concatenates the features from the image and the language
         together and feds it to a dense decoder
         Args:
         size: a parameter to many of the units in the layers of the model
@@ -366,7 +374,7 @@ class DataModelling:
     def __define_model_tanti_modified_LSTM_1(self, size=256, lstm_size=500 ):
         """
         Intantiates a deep learning model
-        method concatenates the features from the image and the language
+        model concatenates the features from the image and the language
         together and feds it to an LSTM decoder
         Args:
         size: a parameter to many of the units in the layers of the model
@@ -411,7 +419,8 @@ class DataModelling:
         plt.legend(['train', 'test'], loc='upper left')
         plt.show()
 
-    def to_word(self,integer, tokenizer):
+    @staticmethod
+    def to_word(integer, tokenizer):
         """
         Computes the word represented by the integer, encoded by the tokenizer
         Args:
@@ -454,8 +463,6 @@ class DataModelling:
         gen_caption=[]
         for i in range(self.testdf.shape[0]):
             key=self.testdf['filename'][i]
-            #print(key)
-            #print(self.testdf['caption'][i])
             gen_caption.append(self.generate_desc(self.model, self.t, features_test[key]))
         self.testdf['gen_caption']=gen_caption
 
@@ -465,8 +472,6 @@ class DataModelling:
         gen_caption=[]
         for i in range(self.traindf.shape[0]):
             key=self.traindf['filename'][i]
-            #print(key)
-            #print(self.traindf['caption'][i])
             gen_caption.append(self.generate_desc(self.model, self.t, features_train[key]))
         self.traindf['gen_caption']=gen_caption
 
@@ -479,10 +484,13 @@ class DataModelling:
         total3=[]
         total4=[]
         #count=0
+        if (self.testdf.shape[0] <= 0):
+            raise Exception("Error: Check the number of samples in the test data set ")
+
         for index in range(0, self.testdf.shape[0]):
             reference = [self.testdf['caption_new'][index].split()]
             candidate =self.testdf['gen_caption'][index].split()[1:-1]
-            #print(len(candidate))
+
             if(len(candidate) >1):
                 val1=sentence_bleu(reference, candidate, weights=(1, 0, 0, 0), smoothing_function=smoothie)
                 val2=sentence_bleu(reference, candidate, weights=(0, 1, 0, 0), smoothing_function=smoothie)
@@ -494,9 +502,12 @@ class DataModelling:
                 total2.append(val2)
                 total3.append(val3)
                 total4.append(val4)
-        logging.info(sum(total) / len(total) )
-        logging.info(sum(total1) / len(total1) )
-        logging.info(sum(total2) / len(total2) )
-        logging.info(sum(total3) / len(total3) )
-        logging.info(sum(total4) / len(total4) )
-        #logging.info(count)
+        if len(total)==0:
+            logging.info("No candidate for computing Bleu scores")
+        else:
+            logging.info(sum(total) / len(total) )
+            logging.info(sum(total1) / len(total1) )
+            logging.info(sum(total2) / len(total2) )
+            logging.info(sum(total3) / len(total3) )
+            logging.info(sum(total4) / len(total4) )
+            #logging.info(count)

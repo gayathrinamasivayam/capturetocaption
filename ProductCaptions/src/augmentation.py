@@ -21,36 +21,35 @@ class augment_image:
 
     Args:
     path_to_images: path to the training data set where the images are located
+    path_to_data: path to the data folder to write the augmented_data_1.csv file
     filename: filename of a csv which contains the list of images and caption pairs
     numofimages: num of new augmented images to be creadted
     random seed: default value is set to 363 but can be used to re-create the same
                 augmented dictonary
-    The class ouputs
-
     """
 
-    def __init__(self, path_to_images, filename, numofimages=0, random_seed=363):
+    def __init__(self, path_to_images, path_to_data, filename, numofimages=0, random_seed=363):
         #try:
             #read in the csv
-            self.df=pd.read_csv(path_to_images/filename)
+            self.path_to_data=path_to_data
+            print(self.path_to_data, filename)
+            self.df=pd.read_csv(self.path_to_data/filename)
             print(self.df.columns)
         #except:
             #remove any pre-exisitng files in the augment folder
             #os.path=path_to_images
-            p=path_to_images/"augmented"
+            self.path_to_images = path_to_images
+            p=self.path_to_images/"augmented"
             files=p.glob("*")
-            #files = glob.glob(path_to_images+"augmented\\*")
-            #files = glob.glob(path_to_images/"augmented/*")
             for f in files:
                 os.remove(f)
-            self.__generate_images(numofimages, path_to_images, random_seed)
-            self.__generate_captions(path_to_images)
+            self.__generate_images(numofimages, random_seed)
+            self.__generate_captions()
 
-    def __generate_images(self, numofimages, path_to_images, random_seed):
+    def __generate_images(self, numofimages, random_seed):
         """
         Generate new augmented images
         Args:
-            path_to_images: path to the folder containing the Images
             random_seed: random number that is used to seed the generation process
             numofimages: number of additional images to be generated
         """
@@ -69,13 +68,13 @@ class augment_image:
             self.dict_newcaptions[index]=self.df['caption_new'][randindex]
 
             #load the image
-            img = load_img(path_to_images/fname)
+            img = load_img(self.path_to_images/fname)
             data = img_to_array(img)
             sample = expand_dims(data, 0)
 
             #transform the image and save it in the augment folder in the path provided
             datagen = ImageDataGenerator(horizontal_flip=True, rotation_range=15, brightness_range=[0.4,0.9])
-            it = datagen.flow(sample, batch_size=1, save_to_dir=path_to_images/"augmented",save_prefix=str(index)+"_aug_"+str(result.group(1)), save_format="png")
+            it = datagen.flow(sample, batch_size=1, save_to_dir=self.path_to_images/"augmented",save_prefix=str(index)+"_aug_"+str(result.group(1)), save_format="png")
             batch = it.next()
             """
             image = batch[0].astype('uint8')
@@ -84,24 +83,20 @@ class augment_image:
             print(self.df['caption'][randindex])
             """
 
-    def __generate_captions(self, path_to_images):
+    def __generate_captions(self):
         """
         Create captions for the augmented and store it in the file
         augmented_data_1.csv
-        Args:
-        path_to_images: path to the image
-
         """
-        files = [f for f in listdir(path_to_images/"augmented") if isfile(join(path_to_images/"augmented", f))]
+        files = [f for f in listdir(self.path_to_images/"augmented") if isfile(join(self.path_to_images/"augmented", f))]
         print(files)
         df1 = pd.DataFrame(columns=['filename','caption_old','caption','caption_new'])
         for file in files:
             result = re.match(r'(\d+)\_(.*)', file)
-            #print(result.group(1))
             index = int(result.group(1))
             df1=df1.append(pd.DataFrame([["augmented/"+file,self.dict_oldcaptions[index],self.dict_captions[index], self.dict_newcaptions[index] ]], columns=['filename','caption_old','caption','caption_new']), ignore_index=True)
-        df1.to_csv("augmented_data.csv")
+        df1.to_csv(self.path_to_data/"augmented_data.csv")
         newdf=self.df.append(df1,ignore_index=True)
         newdf.drop(columns=['Unnamed: 0'], inplace=True)
-        newdf.to_csv("augmented_data_1.csv")
+        newdf.to_csv(self.path_to_data/"augmented_data_1.csv")
         print("finished generating augmented images")

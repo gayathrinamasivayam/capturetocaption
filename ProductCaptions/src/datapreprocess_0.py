@@ -70,7 +70,7 @@ class DataPreprocessing:
 
     def __preprocess_word(self, word):
         """
-        internal funtion to take a word and transform it
+        Internal funtion to take a word and transform it
         if a word is a digit in the dictonary num2words then either transform it to be
         its word representation or eliminate it (eg. capturing 2 seater sofas)
         if it is purely alphabets then return it
@@ -184,7 +184,7 @@ class DataPreprocessing:
             for j in range(1, len_furniture_name):
                 currcaption = " ".join(firstwords[0:j])
                 #print(currcaption)
-                if capdict[currcaption] < max_val and capdict[currcaption]>2:
+                if capdict[currcaption] >= max_val and capdict[currcaption]>2:
                     max_val=capdict[currcaption]
                     captindex=j
                     captlist.append(" ".join(firstwords[0:captindex]))
